@@ -1,0 +1,98 @@
+body {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+.form-control {
+  position: fixed;
+  margin: 10px;
+}
+
+.input-group-text {
+  position: relative;
+  margin: 10px;
+  font-size: 25px;
+  right: 0px;
+}
+
+.sun {
+  font-size: 100px;
+  text-align: center;
+  color: #dddddd;
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  letter-spacing: 1px;
+  width: auto;
+}
+
+.temperature {
+  font-size: 150px;
+  font-weight: lighter;
+  display: block;
+  margin: 5px;
+  text-align: center;
+  color: #dddddd;
+  padding: 5px;
+}
+
+.precipitation {
+  text-align: center;
+  font-size: 30px;
+  display: block;
+  position: relative;
+}
+.wind {
+  text-align: center;
+  display: block;
+  font-size: 30px;
+  position: relative;
+}
+
+.day {
+  text-align: center;
+}
+
+.city {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.cityicon {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+.time {
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+#search-city {
+  display: block;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 20px;
+}
+
+.celcius {
+  font-size: 50px;
+}
+.farh {
+  font-size: 50px;
+}
+.temperature-values {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#current-location {
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  color:  #464444;
+  border: 2px solid #dddddd; }

@@ -96,3 +96,7 @@ body {
   background-color: white;
   color:  #464444;
   border: 2px solid #dddddd; }
+
+  footer {margin-top: 30px;
+  text-align: center;
+font-family: monospace;}

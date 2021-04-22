@@ -1,8 +1,11 @@
-body {
+p {margin: 1px;}
+
+body {background: linear-gradient(to top, #dfe9f3 0%, white 100%);
   padding: 20px;
-  max-width: 500px;
+  max-width: 900px;
   margin: auto;
 }
+
 .form-control {
   position: fixed;
   margin: 15px;
@@ -19,8 +22,7 @@ body {
   font-size: 100px;
   text-align: center;
   color: #dddddd;
-  display: block;
-  margin: 5px;
+  margin-top: 10px;
   padding: 5px;
   letter-spacing: 1px;
   width: auto;
@@ -28,7 +30,6 @@ body {
 
 .temperature {
   font-size: 150px;
-  font-weight: lighter;
   display: block;
   margin: 5px;
   text-align: center;
@@ -54,9 +55,8 @@ body {
 }
 
 .city {
-  text-align: center;
-  font-size: 30px;
-  margin-top: 20px;
+  text-align: center; 
+  font-size: 50px;
 }
 .cityicon {
   text-align: center;
@@ -65,7 +65,7 @@ body {
 }
 
 .time {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: lighter;
   text-align: center;
 }
@@ -79,12 +79,13 @@ body {
 }
 
 .celcius {
-  font-size: 50px;
+  font-size: 20px;
 }
 .farh {
-  font-size: 50px;
+  font-size: 20px;
 }
 .temperature-values {
+  font-size: 20px;
   display: block;
   text-align: center;
   margin: 0 auto;
@@ -100,3 +101,8 @@ body {
   footer {margin-top: 30px;
   text-align: center;
 font-family: monospace;}
+
+#searched-city {width: 100%;
+border-radius: 7px;}
+
+#current-location {width: 100%;}

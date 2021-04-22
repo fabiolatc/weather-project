@@ -13,20 +13,25 @@
 </head>
 
 <body>
-    <form id="search-city">
-        <input type="text" id="searched-city"/>
-        <input type="submit" id="search-button" value = "Search">
-      </form>
-
-      <button id="current-location">Current Location</button>
-        <div class="header">
-                <p class="cityicon"><i class="fas fa-map-marker-alt"></i></p>
-<p class="city" id=city> Guayaquil</p><br>
+     
+<p class="city" id=city> Guayaquil</p>
 <p class="time" id="la-hora">8h00 Sunday | January 17th 2021 </p>
 
-<p class="sun"> <i class="fas fa-cloud-sun"></i></p>           
-<p class="temperature" id="temperature-shown">30°<p/><a href="#temperature-values" id="celcius"class="celcius">C |</a><a href="#" id="farh" class= "farh"
- >F</a>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <p class="sun"> <i class="fas fa-cloud-sun"></i></p>   
+      </div>
+      <div class="col-sm">
+        <p class="temperature" id="temperature-shown">30°<a href="#temperature-values" id="celcius"class="celcius">C |</a><a href="#" id="farh" class= "farh"
+            >F</a></p>
+      </div>
+   
+    </div>
+  </div>
+
+        
+
 
 
 <div class="row">
@@ -72,16 +77,19 @@
     </div> 
 </div>
 
-<div class="col">
-    <div class="day">
-        <i class="fas fa-cloud-sun"> </i> <br>Friday<br> 30ºC
-    </div> 
-</div>
+
 
 
 </div>
 </div>
-    
+<form id="search-city">
+    <input type="text" id="searched-city"/>
+    <input type="submit" id="search-button" value = "Search">
+  </form>
+
+  <button id="current-location">Current Location</button>
+    <div class="header">
+            <p class="cityicon"><i class="fas fa-map-marker-alt"></i></p>
       
          
         </div>

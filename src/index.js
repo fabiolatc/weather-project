@@ -1,5 +1,3 @@
-//Challenge 1
-
 let now = new Date();
 let timeSpace = document.querySelector("#la-hora");
 
@@ -34,22 +32,33 @@ function formatDate() {
   let date = now.getDate();
   let hour = now.getHours();
   let minutes = now.getMinutes();
+  
 
   let displayToday = `${hour}h${minutes} ${day} | ${month} ${date}th ${year}`;
   return displayToday;
+
 }
 
 timeSpace.innerHTML = formatDate();
 
-//Challenge 2
 function dynamicTemperature(response) {
-  let dynamicTemperature = response.data.main.temp;
-  dynamicTemperature = Number(dynamicTemperature);
-let temperatureElement = document.querySelector("#temperature-shown");
-temperatureElementFixed = Math.round(dynamicTemperature);
+  celciusTemperature = response.data.main.temp;
+  let temperatureElement = document.querySelector("#temperature-shown");
+  celciusTemperature = Number(celciusTemperature);
+  
+  let windSpeed = response.data.wind.speed
+  let windElement = document.querySelector("#wind-list")
+  
+  let dynamicHumidity = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity-list");
+  let dynamicDescription = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#description");
 
-temperatureElement.innerHTML = `${temperatureElementFixed}°`
-
+temperatureElementFixed = Math.round(celciusTemperature);
+temperatureElement.innerHTML = `${temperatureElementFixed}`
+windElement.innerHTML = `${windSpeed} km/h`
+humidityElement.innerHTML = `${dynamicHumidity}%`
+descriptionElement.innerHTML = dynamicDescription;
 }
 
 function showCity(event) {
@@ -60,9 +69,28 @@ function showCity(event) {
   let apiKey = "3c7e72471b038017abb118fddfa1d953";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${result.value}&units=metric&appid=${apiKey}`;
   axios.get(url).then(dynamicTemperature)
-  console.log(url)
 }
+
+function changeToFarh(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature-shown");
+  let fahrenheitTemperature = (celciusTemperature * 9 ) / 5 + 32;
+  let fahrenheitTempFixed = Math.round(fahrenheitTemperature);
+  temperatureElement.innerHTML = `${fahrenheitTempFixed}`
+}
+
+function showCelciusAgain(event) {event.preventDefault();
+let temperatureElement = document.querySelector("#temperature-shown");
+temperatureElement.innerHTML = Math.round(celciusTemperature);}
+
+
+let celciusTemperature = null;
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", showCity)
 
+let farhLink = document.querySelector("#farh")
+farhLink.addEventListener("click", changeToFarh);
+
+let celciusLink = document.querySelector("#celcius")
+celciusLink.addEventListener("click", showCelciusAgain)

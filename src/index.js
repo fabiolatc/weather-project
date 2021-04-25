@@ -53,12 +53,16 @@ function dynamicTemperature(response) {
   let humidityElement = document.querySelector("#humidity-list");
   let dynamicDescription = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#description");
+  let iconElement = document.querySelector("#icon");
+  let iconId = response.data.weather[0].icon;
 
 temperatureElementFixed = Math.round(celciusTemperature);
 temperatureElement.innerHTML = `${temperatureElementFixed}`
 windElement.innerHTML = `${windSpeed} km/h`
 humidityElement.innerHTML = `${dynamicHumidity}%`
 descriptionElement.innerHTML = dynamicDescription;
+iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${iconId}@2x.png`);
+
 }
 
 function showCity(event) {
@@ -68,7 +72,8 @@ function showCity(event) {
   dynamicCity.innerHTML = result.value;
   let apiKey = "3c7e72471b038017abb118fddfa1d953";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${result.value}&units=metric&appid=${apiKey}`;
-  axios.get(url).then(dynamicTemperature)
+  axios.get(url).then(dynamicTemperature);
+  
 }
 
 function changeToFarh(event) {
@@ -94,3 +99,4 @@ farhLink.addEventListener("click", changeToFarh);
 
 let celciusLink = document.querySelector("#celcius")
 celciusLink.addEventListener("click", showCelciusAgain)
+

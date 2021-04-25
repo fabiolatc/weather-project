@@ -1,15 +1,19 @@
 p {margin: 1px;}
 
-body {background: linear-gradient(to top, #dfe9f3 0%, white 100%);
-  padding: 20px;
-  max-width: 700px;
-  margin: auto;
+.weather-app {max-width: 600px;
+margin: 0 auto;
+border: 1px solid #dadde1;
+padding: 20px;
+border-radius: 20px;}
+
+body {
+  line-height: 1;
+  font-family: 'Ubuntu', sans-serif;;
+padding: 20px;
+
 }
 
-.form-control {
-  position: fixed;
-  margin: 15px;
-}
+
 
 .input-group-text {
   position: relative;
@@ -29,12 +33,14 @@ body {background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 .temperature {
-  font-size: 150px;
+  font-size: 75px;
   display: block;
   margin: 5px;
-  text-align: center;
+  text-align: left;
   color: #dddddd;
   padding: 5px;
+  float: left;
+
 }
 
 .precipitation {
@@ -55,8 +61,11 @@ body {background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 .city {
-  text-align: center; 
+  text-align: left; 
+  padding: 10px;
   font-size: 50px;
+  font-weight: 700;
+  color: #3c4245;
 }
 .cityicon {
   text-align: center;
@@ -67,25 +76,20 @@ body {background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 .time {
   font-size: 15px;
   font-weight: lighter;
-  text-align: center;
+  text-align: left;
+  padding: 0 10px 0 10px;
+  color: #5f6769;
 }
 
 #search-city {
   display: block;
-  margin-top: 20px;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 20px;
+  margin: 10px;
 }
 
-.celcius {
-  font-size: 20px;
-}
-.farh {
-  font-size: 20px;
-}
 .temperature-values {
-  font-size: 20px;
+float: left;
+margin: 100px;
+padding: 5px;
   display: block;
   text-align: center;
   margin: 0 auto;
@@ -110,3 +114,14 @@ border-radius: 7px;}
 
 .precip {font-size:10px;
 text-align: left;}
+
+.temp-info img {width: 100px;
+display: inline-block;  
+position:relative;
+float: left;
+}
+
+#temperature-shown {display: inline-block;}
+
+.metrics {
+float: left;}

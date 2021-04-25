@@ -48,7 +48,7 @@ function dynamicTemperature(response) {
 let temperatureElement = document.querySelector("#temperature-shown");
 temperatureElementFixed = Math.round(dynamicTemperature);
 
-temperatureElement.innerHTML = `${temperatureElementFixed}°C`
+temperatureElement.innerHTML = `${temperatureElementFixed}°`
 
 }
 

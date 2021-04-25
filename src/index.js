@@ -88,6 +88,11 @@ function showCelciusAgain(event) {event.preventDefault();
 let temperatureElement = document.querySelector("#temperature-shown");
 temperatureElement.innerHTML = Math.round(celciusTemperature);}
 
+function search(city) {
+  let apiKey = "3c7e72471b038017abb118fddfa1d953";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(dynamicTemperature);
+}
 
 let celciusTemperature = null;
 
@@ -100,3 +105,4 @@ farhLink.addEventListener("click", changeToFarh);
 let celciusLink = document.querySelector("#celcius")
 celciusLink.addEventListener("click", showCelciusAgain)
 
+search("Guayaquil")

@@ -39,6 +39,25 @@ function formatDate() {
 
 }
 
+function displayForecast() {
+  forecastHTML = `<div class="row">`;
+let days = ["Thur", "Fri","Sat","Sun"];
+days.forEach(function(day){forecastHTML = forecastHTML + `
+<div class="col-3">
+    <div class="forecast-day">
+            <img src="http://openweathermap.org/img/wn/02n@2x.png" width="30"> </i> <br>${day}<br> 30ºC
+        </div></div> `;
+      }
+      )
+
+
+
+forecastHTML = forecastHTML + `</div>`;
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHTML
+}
+
 timeSpace.innerHTML = formatDate();
 
 function dynamicTemperature(response) {
@@ -62,7 +81,7 @@ windElement.innerHTML = `${windSpeed} km/h`
 humidityElement.innerHTML = `${dynamicHumidity}%`
 descriptionElement.innerHTML = dynamicDescription;
 iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${iconId}@2x.png`);
-
+displayForecast();
 }
 
 function showCity(event) {

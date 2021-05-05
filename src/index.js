@@ -1,6 +1,6 @@
 let now = new Date();
 let timeSpace = document.querySelector("#la-hora");
-
+let apiKey = "3c7e72471b038017abb118fddfa1d953";
 function formatDate() {
   let days = [
     "Sunday",
@@ -51,7 +51,6 @@ days.forEach(function(day){forecastHTML = forecastHTML + `
       )
 
 
-
 forecastHTML = forecastHTML + `</div>`;
 
   let forecastElement = document.querySelector("#forecast");
@@ -74,14 +73,18 @@ function dynamicTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
   let iconId = response.data.weather[0].icon;
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let forecasturl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${apiKey}`
 
-temperatureElementFixed = Math.round(celciusTemperature);
+  temperatureElementFixed = Math.round(celciusTemperature);
 temperatureElement.innerHTML = `${temperatureElementFixed}`
 windElement.innerHTML = `${windSpeed} km/h`
 humidityElement.innerHTML = `${dynamicHumidity}%`
 descriptionElement.innerHTML = dynamicDescription;
 iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${iconId}@2x.png`);
 displayForecast();
+console.log(forecasturl)
 }
 
 function showCity(event) {
@@ -89,10 +92,10 @@ function showCity(event) {
   let result = document.querySelector("#searched-city");
   let dynamicCity = document.querySelector("#city");
   dynamicCity.innerHTML = result.value;
-  let apiKey = "3c7e72471b038017abb118fddfa1d953";
+  
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${result.value}&units=metric&appid=${apiKey}`;
   axios.get(url).then(dynamicTemperature);
-  
+ 
 }
 
 function changeToFarh(event) {
@@ -108,7 +111,7 @@ let temperatureElement = document.querySelector("#temperature-shown");
 temperatureElement.innerHTML = Math.round(celciusTemperature);}
 
 function search(city) {
-  let apiKey = "3c7e72471b038017abb118fddfa1d953";
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(dynamicTemperature);
 }

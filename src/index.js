@@ -49,13 +49,13 @@ function formatDate() {
 }
 
 function displayForecast(response) {
-  console.log(response)
+  let forecast = response.data.daily;
   forecastHTML = `<div class="row">`;
-let days = ["Thur", "Fri","Sat","Sun"];
-days.forEach(function(day){forecastHTML = forecastHTML + `
+
+forecast.forEach(function(forecastDay){forecastHTML = forecastHTML + `
 <div class="col-3">
     <div class="forecast-day">
-            <img src="http://openweathermap.org/img/wn/02n@2x.png" width="30"> </i> <br>${day}<br> 30ºC
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width="30"> </i> <br>${forecastDay.dt}<br> ${forecastDay.temp.day}ºC
         </div></div> `;
       }
       )

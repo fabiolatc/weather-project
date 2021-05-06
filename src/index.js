@@ -1,7 +1,13 @@
 let now = new Date();
 let timeSpace = document.querySelector("#la-hora");
 let apiKey = "3c7e72471b038017abb118fddfa1d953";
+
 function formatDate() {
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -30,8 +36,11 @@ function formatDate() {
   let month = months[now.getMonth()];
   let year = now.getYear() + 1900;
   let date = now.getDate();
-  let hour = now.getHours();
+  
   let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   
 
   let displayToday = `${hour}h${minutes} ${day} | ${month} ${date}th ${year}`;
@@ -39,7 +48,8 @@ function formatDate() {
 
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response)
   forecastHTML = `<div class="row">`;
 let days = ["Thur", "Fri","Sat","Sun"];
 days.forEach(function(day){forecastHTML = forecastHTML + `
@@ -59,6 +69,14 @@ forecastHTML = forecastHTML + `</div>`;
 
 timeSpace.innerHTML = formatDate();
 
+function dynamicForecast(coordinates) {
+ console.log(coordinates)
+ let lat = coordinates.lat;
+ let lon = coordinates.lon;
+let forecasturl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${apiKey}&units=metric`;
+axios.get(forecasturl).then(displayForecast);
+}
+
 function dynamicTemperature(response) {
   celciusTemperature = response.data.main.temp;
   let temperatureElement = document.querySelector("#temperature-shown");
@@ -73,18 +91,16 @@ function dynamicTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
   let iconId = response.data.weather[0].icon;
-  let lat = response.data.coord.lat;
-  let lon = response.data.coord.lon;
-  let forecasturl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${apiKey}`
+  
 
   temperatureElementFixed = Math.round(celciusTemperature);
 temperatureElement.innerHTML = `${temperatureElementFixed}`
 windElement.innerHTML = `${windSpeed} km/h`
 humidityElement.innerHTML = `${dynamicHumidity}%`
 descriptionElement.innerHTML = dynamicDescription;
-iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${iconId}@2x.png`);
-displayForecast();
-console.log(forecasturl)
+iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${iconId}@2x.png`);
+dynamicForecast(response.data.coord);
+
 }
 
 function showCity(event) {
